@@ -12,7 +12,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { assistantReducer } from './store/assistant.reducer'; // Updated to 'store'
 import { AssistantEffects } from './store/assistant.effects'; // Updated to 'store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'; // Optional, for debugging
-import { GlobalComponent } from './global-component';
 
 @NgModule({
   declarations: [
