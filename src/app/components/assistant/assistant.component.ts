@@ -22,7 +22,7 @@ export class AssistantComponent implements OnInit, OnDestroy {
   loading: boolean = false;
 
   // Form properties
-  mealType = 'Desayuno';
+  mealType = 'desayuno';
   preferences = '';
 
   // Subject for unsubscribing
