@@ -12,6 +12,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { assistantReducer } from './store/assistant.reducer'; // Updated to 'store'
 import { AssistantEffects } from './store/assistant.effects'; // Updated to 'store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'; // Optional, for debugging
+import { environment } from '../environments/environment'; // Environment configuration
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule for HTTP requests
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools'; // Optional, for deb
   ],
   imports: [
     BrowserModule,
+    HttpClientModule, // Must be here for HttpClient to work
     FormsModule,
     NgbModule,
     AppRoutingModule,
@@ -29,8 +32,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools'; // Optional, for deb
     EffectsModule.forRoot([AssistantEffects]), // Effects for assistant feature
     StoreDevtoolsModule.instrument({ // Optional: Remove in production if not needed
       maxAge: 25, // Retains last 25 states
+      logOnly: environment.production
     })
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
