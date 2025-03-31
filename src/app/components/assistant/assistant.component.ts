@@ -25,6 +25,15 @@ export class AssistantComponent implements OnInit, OnDestroy {
   mealType = 'desayuno';
   preferences = '';
 
+  // Hardcoded dictionary for meal types
+  mealTypes: { value: string; display: string }[] = [
+    { value: 'desayuno', display: 'Desayuno' },
+    { value: 'almuerzo', display: 'Almuerzo' },
+    { value: 'cena', display: 'Cena' },
+    { value: 'salsa', display: 'Salsa' },
+    { value: 'postre', display: 'Postre' },
+  ];
+
   // Subject for unsubscribing
   private destroy$ = new Subject<void>();
 
