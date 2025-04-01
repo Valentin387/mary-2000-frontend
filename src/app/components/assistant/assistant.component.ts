@@ -74,6 +74,10 @@ export class AssistantComponent implements OnInit, OnDestroy {
         this.loading = loading;
         //console.log("loading: ", this.loading);
         if (loading) {
+          // Blur the active element before opening the modal
+          if (document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
           this.modalService.open(this.loadingTemplate, { centered: true });
         } else {
           this.modalService.dismissAll();
