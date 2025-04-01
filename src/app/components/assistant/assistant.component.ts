@@ -37,7 +37,10 @@ export class AssistantComponent implements OnInit, OnDestroy {
   // Subject for unsubscribing
   private destroy$ = new Subject<void>();
 
-  constructor(private store: Store, private modalService: NgbModal) {}
+  constructor(
+    private store: Store, 
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit() {
     // Subscribe to messages
@@ -45,6 +48,7 @@ export class AssistantComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(messages => {
         this.messages = messages;
+        //console.log("messages: ", this.messages);
       });
 
     // Subscribe to chat input text
@@ -52,6 +56,7 @@ export class AssistantComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(chatInputText => {
         this.chatInputText = chatInputText;
+        //console.log("chatInputText: ", this.chatInputText);
       });
 
     // Subscribe to threadId
@@ -59,6 +64,7 @@ export class AssistantComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(threadId => {
         this.threadId = threadId;
+        //console.log("threadId: ", this.threadId);
       });
 
     // Subscribe to loading state (to control modal)
@@ -66,6 +72,7 @@ export class AssistantComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(loading => {
         this.loading = loading;
+        //console.log("loading: ", this.loading);
         if (loading) {
           this.modalService.open(this.loadingTemplate, { centered: true });
         } else {

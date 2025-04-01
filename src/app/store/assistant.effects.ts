@@ -14,7 +14,14 @@ export class AssistantEffects {
       ofType(AssistantActions.submitForm),
       mergeMap(({ mealType, preferences }) =>
         this.apiService.recommendMeal(mealType, preferences).pipe(
-          map(response => AssistantActions.submitFormSuccess(response)),
+          map(response => {
+            //console.log('Effect dispatching submitFormSuccess with:', response);
+            return AssistantActions.submitFormSuccess({
+              recommendation: response.recommendation,
+              threadId: response.threadId,
+              sources: response.sources
+            });
+          }),
           catchError(error => of(AssistantActions.submitFormFailure({ error: error.message })))
         )
       )
