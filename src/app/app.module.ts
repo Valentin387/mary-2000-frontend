@@ -13,7 +13,11 @@ import { assistantReducer } from './store/assistant.reducer'; // Updated to 'sto
 import { AssistantEffects } from './store/assistant.effects'; // Updated to 'store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'; // Optional, for debugging
 import { environment } from '../environments/environment'; // Environment configuration
-import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule for HTTP requests
+/* import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule for HTTP requests */
+import {
+  provideHttpClient,
+  withInterceptorsFromDi
+} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,6 @@ import { HttpClientModule } from '@angular/common/http'; // Import HttpClientMod
   ],
   imports: [
     BrowserModule,
-    HttpClientModule, // Must be here for HttpClient to work
     FormsModule,
     NgbModule,
     AppRoutingModule,
@@ -36,5 +39,8 @@ import { HttpClientModule } from '@angular/common/http'; // Import HttpClientMod
     })
   ],
   bootstrap: [AppComponent],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi()),
+  ],
 })
 export class AppModule { }
