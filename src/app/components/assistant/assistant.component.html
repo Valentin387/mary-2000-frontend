@@ -30,7 +30,8 @@
           <div class="card-body" style="max-height: 400px; overflow-y: auto;">
             <div *ngFor="let message of messages" class="mb-2">
               <span [class.text-primary]="message.role === 'assistant'" [class.text-muted]="message.role === 'you'">
-                <strong>{{ message.role === 'assistant' ? 'Assistant' : 'You' }}:</strong> {{ message.content }}
+                <strong>{{ message.role === 'assistant' ? 'Assistant' : 'You' }}:</strong> 
+                  <span [innerHTML]="message.content"></span> <!-- Render HTML -->
               </span>
             </div>
           </div>

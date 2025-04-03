@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as AssistantActions from '../../store/assistant.actions';
 import { selectMessages, selectChatInputText, selectThreadId, selectLoading } from '../../store/assistant.selectors';
 import { Message } from '../../store/assistant.reducer';
+import { marked } from 'marked'; // Import marked
 
 @Component({
   selector: 'app-assistant',
@@ -47,7 +48,11 @@ export class AssistantComponent implements OnInit, OnDestroy {
     this.store.select(selectMessages)
       .pipe(takeUntil(this.destroy$))
       .subscribe(messages => {
-        this.messages = messages;
+        // Parse Markdown synchronously for each message
+        this.messages = messages.map(msg => ({
+          ...msg,
+          content: marked.parse(msg.content) as string // Explicitly synchronous
+        }));
         //console.log("messages: ", this.messages);
       });
 
