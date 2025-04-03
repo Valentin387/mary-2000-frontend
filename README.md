@@ -1,5 +1,13 @@
 # Mary-2000-Frontend
 
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![GitHub last commit](https://img.shields.io/github/last-commit/Valentin387/mary-2000-frontend?style=for-the-badge)
+![Issues](https://img.shields.io/github/issues/Valentin387/mary-2000-frontend?style=for-the-badge)
+![Pull Requests](https://img.shields.io/github/issues-pr/Valentin387/mary-2000-frontend?style=for-the-badge)
+
 Welcome to the **Mary-2000 Frontend**, an Angular-based web application designed to interact with a meal recommendation API powered by OpenAI. This project provides a user-friendly interface for submitting meal preferences and chatting with an AI assistant, leveraging NgRx for state management and Bootstrap for styling.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
@@ -8,59 +16,38 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
+## Context
+My grandma is the best cook in the family. I can proudly say that any success brought by any of us is due to the energy and nutrients gotten from her insanely crazy good cuisine. She has over 70 years of experience as a housewife, but she won’t last forever. To preserve the performance and future academic and economic success of the family, I need to learn to cook like her. I know how to use the different tools in a kitchen, so that’s not the problem. The challenge is that all she does comes from her spontaneous generation of unique recipes. For a month and a half, I documented her meals in a structured format saved inside a Google Sheet. I also had to include some legacy recipes where the template is basically: ingredients and cooking process. This project is my attempt to immortalize her culinary genius using technology.
+
+However, it also serves as an Angular frontend template for any app that involves file searching with LLM's development keys
+
 ## Folder Structure
 ```bash
-├── LICENSE
-├── README.md
-├── angular.json
-├── folder-structure-gen.py
-├── package-lock.json
-├── package.json
-├── public
-│   └── favicon.ico
-├── src
-│   ├── app
-│   │   ├── app-routing.module.ts
-│   │   ├── app.component.html
-│   │   ├── app.component.scss
-│   │   ├── app.component.spec.ts
-│   │   ├── app.component.ts
-│   │   ├── app.module.ts
-│   │   ├── components
-│   │   │   ├── about
-│   │   │   │   ├── about.component.html
-│   │   │   │   ├── about.component.scss
-│   │   │   │   ├── about.component.spec.ts
-│   │   │   │   └── about.component.ts
-│   │   │   ├── assistant
-│   │   │   │   ├── assistant.component.html
-│   │   │   │   ├── assistant.component.scss
-│   │   │   │   ├── assistant.component.spec.ts
-│   │   │   │   └── assistant.component.ts
-│   │   │   └── navbar
-│   │   │       ├── navbar.component.html
-│   │   │       ├── navbar.component.scss
-│   │   │       ├── navbar.component.spec.ts
-│   │   │       └── navbar.component.ts
-│   │   ├── global-component.ts
-│   │   ├── services
-│   │   │   ├── api.service.spec.ts
-│   │   │   └── api.service.ts
-│   │   └── store
-│   │       ├── assistant.actions.ts
-│   │       ├── assistant.effects.ts
-│   │       ├── assistant.reducer.ts
-│   │       ├── assistant.selectors.ts
-│   │       └── index.ts
-│   ├── environments
-│   │   ├── environment.prod.ts
-│   │   └── environment.ts
-│   ├── index.html
-│   ├── main.ts
-│   └── styles.scss
-├── tsconfig.app.json
-├── tsconfig.json
-└── tsconfig.spec.json
+my-angular-project/
+├── src/
+│   ├── app/
+│   │   ├── app-routing.module.ts   # Defines routes for navigation
+│   │   ├── app.component.*         # Root component files
+│   │   ├── app.module.ts           # Root module for dependency injection
+│   │   ├── components/             # Reusable UI components
+│   │   │   ├── navbar/             # Navigation bar
+│   │   │   ├── about/              # About page
+│   │   │   └── assistant/          # Core feature component
+│   │   ├── services/               # Business logic and API calls
+│   │   │   └── api.service.ts      # HTTP service for backend integration
+│   │   └── store/                  # NgRx state management
+│   │       ├── assistant.actions.ts   # Action definitions
+│   │       ├── assistant.effects.ts   # Side effects (e.g., API calls)
+│   │       ├── assistant.reducer.ts   # State updates
+│   │       ├── assistant.selectors.ts # State queries
+│   ├── environments/               # Configuration for dev/prod
+│   ├── index.html                  # Entry point
+│   ├── main.ts                     # Bootstrap file
+│   └── styles.scss                 # Global styles
+├── angular.json                    # Project config
+├── package.json                    # Dependencies
+└── tsconfig*.json                  # TypeScript configs
+
 ```
 
 ## Features
@@ -154,16 +141,7 @@ Check exact versions in `package.json`:
 ### 3. Chat with the Assistant
 - After submitting, type messages in the chat textarea and click "Send" to interact with the AI (once backend integration is complete).
 
-## Development Notes
-
-- **CORS Issue:** The frontend is currently facing a CORS issue with the backend (`https://mary-2000-backend-bbad22375b6c.herokuapp.com`). A proxy workaround is available for local development:
-
-```bash
-ng serve --proxy-config proxy.conf.json
-```
-
 - **Future Improvements:**
-  - Resolve backend CORS configuration.
   - Enhance form validation and UI feedback.
   - Add unit tests for components and services.
 
